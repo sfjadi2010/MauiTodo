@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiTodo.Tasks.MainPage"
+             xmlns:viewmodel="clr-namespace:MauiTodo.Tasks.ViewModel"
+             x:DataType="viewmodel:MainViewModel">
+
+    <Grid RowDefinitions="100, Auto, *"
+          ColumnDefinitions="75*, 25*"
+          Padding="10"
+          RowSpacing="10"
+          ColumnSpacing="10">
+
+        <Image Source="logo.png"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               BackgroundColor="Transparent" />
+
+        <Entry Placeholder="Enter a task"
+               Text="{Binding TaskText}"
+               Grid.Row="1"
+               x:Name="taskEntry" />
+
+        <Button Text="Add Task"
+                Grid.Row="1"
+                Grid.Column="1"
+                Command="{Binding AddTaskCommand}" />
+
+        <CollectionView Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type x:String}">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=DeleteTaskCommand}"
+                                           CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="0, 5">
+                            <Frame>
+                                <Label Text="{Binding .}"
+                                       FontSize="24" />
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
