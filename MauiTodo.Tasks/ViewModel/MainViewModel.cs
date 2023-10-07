@@ -25,7 +25,7 @@ namespace MauiTodo.Tasks.ViewModel
         string taskText;
 
         [RelayCommand]
-        void OnAddTask()
+        void AddTask()
         {
             if (string.IsNullOrWhiteSpace(TaskText))
                 return;
@@ -36,7 +36,7 @@ namespace MauiTodo.Tasks.ViewModel
         }
 
         [RelayCommand]
-        void OnDeleteTask(string task)
+        void DeleteTask(string task)
         {
             if (Items.Contains(task))
             {
