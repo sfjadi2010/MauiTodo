@@ -43,5 +43,11 @@ namespace MauiTodo.Tasks.ViewModel
                 Items.Remove(task);
             }
         }
+
+        [RelayCommand]
+        async Task TaskTapped(string task)
+        {
+            await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={task}");
+        }
     }
 }
