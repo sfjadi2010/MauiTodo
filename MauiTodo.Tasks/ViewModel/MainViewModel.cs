@@ -49,5 +49,11 @@ namespace MauiTodo.Tasks.ViewModel
         {
             await Shell.Current.GoToAsync($"{nameof(DetailPage)}?Text={task}");
         }
+
+        [RelayCommand]
+        async Task AddTaskTapped()
+        {
+            await Shell.Current.GoToAsync(nameof(AddTaskPage));
+        }
     }
 }
