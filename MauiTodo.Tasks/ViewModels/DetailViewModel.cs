@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MauiTodo.Tasks.ViewModel
+namespace MauiTodo.Tasks.ViewModels
 {
     [QueryProperty("Text", "Text")]
     public partial class DetailViewModel : ObservableObject

@@ -1,4 +1,5 @@
-﻿using MauiTodo.Tasks.ViewModel;
+﻿using MauiTodo.Tasks.Data;
+using MauiTodo.Tasks.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace MauiTodo.Tasks
@@ -21,6 +22,11 @@ namespace MauiTodo.Tasks
 
             builder.Services.AddTransient<DetailPage>();
             builder.Services.AddTransient<DetailViewModel>();
+
+            builder.Services.AddTransient<AddTaskPage>();
+            builder.Services.AddTransient<AddViewModel>();
+
+            builder.Services.AddSingleton<TodoItemDatabase>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

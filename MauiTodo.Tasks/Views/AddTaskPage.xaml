@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiTodo.Tasks.AddTaskPage"
+             xmlns:viewModel="clr-namespace:MauiTodo.Tasks.ViewModels"
+             x:DataType="viewModel:AddViewModel"
+             Title="Add Task Page">
+    <VerticalStackLayout Padding="5">
+        <Frame CornerRadius="10"
+               Margin="5">
+            <StackLayout>
+                <Label Text="Todo Title"
+                       FontSize="Small" />
+
+                <Entry x:Name="TitleEntry"
+                       Text="{Binding TitleText}"
+                       Placeholder="Enter Todo" />
+            </StackLayout>
+
+        </Frame>
+
+        <Frame CornerRadius="10"
+               Margin="5">
+
+            <StackLayout>
+                <Label Text="Description task"
+                       FontSize="Small" />
+                <Entry x:Name="DescriptionEntry"
+                       Text="{Binding DescriptionText}"
+                       Placeholder="Enter Description" />
+            </StackLayout>
+        </Frame>
+
+        <Frame CornerRadius="10"
+               Margin="5">
+            <StackLayout>
+                <Label Text="Done"
+                       FontSize="Small" />
+                <Switch x:Name="DoneSwitch"
+                        IsToggled="{Binding Done}" />
+            </StackLayout>
+        </Frame>
+
+        <Grid ColumnDefinitions="50*, 50*">
+            <Button Text="Cancel"
+                    Margin="5"
+                    Grid.Column="1"
+                    Command="{Binding CancelCommand}" />
+            <Button Text="Save"
+                    Margin="5"
+                    Grid.Column="0"
+                    Command="{Binding AddTaskCommand}" />
+        </Grid>
+        
+    </VerticalStackLayout>
+</ContentPage>

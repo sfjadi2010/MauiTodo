@@ -1,4 +1,4 @@
-﻿using MauiTodo.Tasks.ViewModel;
+﻿using MauiTodo.Tasks.ViewModels;
 
 namespace MauiTodo.Tasks
 {
