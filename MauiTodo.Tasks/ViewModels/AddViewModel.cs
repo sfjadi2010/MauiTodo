@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiTodo.Tasks.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,10 @@ namespace MauiTodo.Tasks.ViewModels
 {
     public partial class AddViewModel : ObservableObject
     {
-        public AddViewModel()
+        TodoItemDatabase _database;
+        public AddViewModel(TodoItemDatabase database)
         {
+            _database = database;
         }
 
         [ObservableProperty]
@@ -28,8 +31,18 @@ namespace MauiTodo.Tasks.ViewModels
         {
             if (string.IsNullOrWhiteSpace(TitleText))
                 return;
+
+            var todoItem = new Models.TodoItem
+            {
+                Id = 0,
+                Todo = TitleText,
+                Description = DescriptionText,
+                Done = Done
+            };
+
+            await _database.SaveItemAsync(todoItem);
             
-            await Shell.Current.GoToAsync(nameof(MainPage));
+            // await Shell.Current.GoToAsync(nameof(MainPage));
         }
 
         [RelayCommand]
